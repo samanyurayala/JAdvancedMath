@@ -81,7 +81,7 @@ public final class Integral {
             double[] weights = calcWeights(h, k, isSine);
             sum += f0 * weights[0] + f1 * weights[1] + f2 * weights[2];
         }
-        return sum;
+        return Math.round(sum * 1e10) / 1e10;
     }
 
     private static double[] calcWeights(double h, double k, boolean isSine) {
