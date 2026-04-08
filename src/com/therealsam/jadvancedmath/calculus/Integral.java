@@ -74,10 +74,10 @@ public final class Integral {
         for (int i = 0; i < n; i++) {
             functionSamples[i] = f.apply(a + i * h);
         }
-        for (int i = 0; i < n - 1; i += 2) {
+        for (int i = 0; i < n - 2; i += 2) {
             double f0 = functionSamples[i];
             double f1 = functionSamples[i + 1];
-            double f2 = functionSamples[i];
+            double f2 = functionSamples[i + 2];
             double[] weights = calcWeights(h, k, isSine);
             sum += f0 * weights[0] + f1 * weights[1] + f2 * weights[2];
         }
@@ -111,11 +111,13 @@ public final class Integral {
         else if (regex.startsWith("\\f+")) {
             String[] frequency = regex.split("\\+");
             if (frequency.length != 2 || !frequency[1].chars().allMatch(Character::isDigit)) throw new IllegalArgumentException("Not a valid regex");
-            return filon(f, a, b, Double.parseDouble(frequency[1]), 20, true);
+            double k = Double.parseDouble(frequency[1]);
+            return filon(f, a, b, k, (b - a) * k / Math.PI, true);
         } else if (regex.startsWith("\\f")) {
             String[] frequency = regex.split("f");
             if (frequency.length != 2 || !frequency[1].chars().allMatch(Character::isDigit)) throw new IllegalArgumentException("Not a valid regex");
-            return filon(f, a, b, Double.parseDouble(frequency[1]), 20, false);
+            double k = Double.parseDouble(frequency[1]);
+            return filon(f, a, b, k, (b - a) * k / Math.PI, false);
         }
         return adaptiveSimpson(f, a, b, 1e-11);
     }
