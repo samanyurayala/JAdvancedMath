@@ -70,11 +70,9 @@ public final class Integral {
         if (n % 2 != 0) n++;
         double h = (b - a) / n;
         double sum = 0;
-        double[] samples = new double[(int)n];
         double[] functionSamples = new double[(int)n];
         for (int i = 0; i < n; i++) {
-            samples[i] = a + i * h;
-            functionSamples[i] = f.apply(samples[i]);
+            functionSamples[i] = f.apply(a + i * h);
         }
         for (int i = 0; i < n - 1; i += 2) {
             double f0 = functionSamples[i];
