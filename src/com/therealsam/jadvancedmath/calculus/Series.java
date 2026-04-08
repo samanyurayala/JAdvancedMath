@@ -2,7 +2,9 @@ package com.therealsam.jadvancedmath.calculus;
 
 import java.util.function.Function;
 
-public abstract class Series {
+public final class Series {
+
+    private Series() {}
 
     public static double sum(int start, double end, Function<Double, Double> f) {
         if (end == Double.NEGATIVE_INFINITY) return 0;

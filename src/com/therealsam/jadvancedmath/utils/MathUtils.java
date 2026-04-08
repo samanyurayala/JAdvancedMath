@@ -2,7 +2,9 @@ package com.therealsam.jadvancedmath.utils;
 
 import java.util.Arrays;
 
-public abstract class MathUtils {
+public final class MathUtils {
+
+    private MathUtils() {}
 
     public static double log(double base, double n) {
         return Math.log(n) / Math.log(base);

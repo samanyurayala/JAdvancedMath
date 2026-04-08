@@ -10,6 +10,6 @@ import java.util.function.Function;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(Integral.integrate(x -> 1/x, 1, 2, "\\s+"));
+        System.out.println(Integral.integrate(x -> 1/x, 1, 2));
     }
 }

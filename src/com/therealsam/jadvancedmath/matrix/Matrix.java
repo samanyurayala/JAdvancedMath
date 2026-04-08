@@ -1,4 +1,6 @@
 package com.therealsam.jadvancedmath.matrix;
 
-public class Matrix {
+public final class Matrix {
+
+    private Matrix() {}
 }

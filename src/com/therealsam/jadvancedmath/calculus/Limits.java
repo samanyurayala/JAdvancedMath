@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Function;
 
-public abstract class Limits {
+public final class Limits {
+
+    private Limits() {}
 
     public static double limit(Function<Double, Double> f, double limit, String direction) {
         return eval(f, limit, direction);

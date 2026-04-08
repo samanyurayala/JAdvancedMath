@@ -2,7 +2,9 @@ package com.therealsam.jadvancedmath.calculus;
 
 import java.util.function.Function;
 
-public abstract class Derivative {
+public final class Derivative {
+
+    private Derivative() {}
 
     public static double tangent(Function<Double, Double> f, double x) {
         return derivative(f).apply(x);
