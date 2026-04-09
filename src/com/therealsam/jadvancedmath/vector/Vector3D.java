@@ -99,11 +99,11 @@ public class Vector3D {
     }
 
     public double magnitude() {
-        return Math.sqrt(x * x + y * y + z * z);
+        return Math.hypot(Math.hypot(x, y), z);
     }
 
     public double magnitudePow(int n) {
-        return Math.pow(Math.sqrt(x * x + y * y + z * z), n);
+        return Math.pow(Math.hypot(Math.hypot(x, y), z), n);
     }
 
     public Vector3D normalize() {

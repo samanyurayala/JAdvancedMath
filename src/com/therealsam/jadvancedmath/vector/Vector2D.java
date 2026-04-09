@@ -88,11 +88,11 @@ public class Vector2D {
     }
 
     public double magnitude() {
-        return Math.sqrt(x * x + y * y);
+        return Math.hypot(x, y);
     }
 
     public double magnitudePow(int n) {
-        return Math.pow(Math.sqrt(x * x + y * y), n);
+        return Math.pow(Math.hypot(x, y), n);
     }
 
     public Vector2D normalize() {

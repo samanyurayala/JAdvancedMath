@@ -71,10 +71,10 @@ public final class Integral {
         double h = (b - a) / n;
         double sum = 0;
         double[] functionSamples = new double[(int)n];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < (int) n; i++) {
             functionSamples[i] = f.apply(a + i * h);
         }
-        for (int i = 0; i < n - 2; i += 2) {
+        for (int i = 0; i < (int) n - 2; i += 2) {
             double f0 = functionSamples[i];
             double f1 = functionSamples[i + 1];
             double f2 = functionSamples[i + 2];
