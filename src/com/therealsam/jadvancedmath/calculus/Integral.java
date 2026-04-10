@@ -17,8 +17,8 @@ public final class Integral {
         return adaptiveSimpson(f, a, b, 1e-11);
     }
 
-    public static double integrate(Function<Double, Double> f, double a, double b, @Language("RegExp") String regex) {
-        return compile(regex, f, a, b);
+    public static double integrate(Function<Double, Double> f, double a, double b, @Language("RegExp") String flag) {
+        return compile(flag, f, a, b);
     }
 
 
@@ -105,16 +105,16 @@ public final class Integral {
         return (b - a) * (f.apply(a) + 4 * f.apply((a + b) / 2) + f.apply(b))/6;
     }
 
-    private static double compile(@Language("RegExp") String regex, Function<Double, Double> f, double a, double b) {
-        if (regex.equals("\\s")) return simpson(f, a, b, 10000);
-        else if (regex.equals("\\G")) return gaussKronrod(f, a, b);
-        else if (regex.startsWith("\\f+")) {
-            String[] frequency = regex.split("\\+");
+    private static double compile(@Language("RegExp") String flag, Function<Double, Double> f, double a, double b) {
+        if (flag.equalsIgnoreCase("simpson")) return simpson(f, a, b, 10000);
+        else if (flag.equals("gaussKronrod")) return gaussKronrod(f, a, b);
+        else if (flag.startsWith("filon+")) {
+            String[] frequency = flag.split("\\+");
             if (frequency.length != 2 || !frequency[1].chars().allMatch(Character::isDigit)) throw new IllegalArgumentException("Not a valid regex");
             double k = Double.parseDouble(frequency[1]);
             return filon(f, a, b, k, (b - a) * k / Math.PI, true);
-        } else if (regex.startsWith("\\f")) {
-            String[] frequency = regex.split("f");
+        } else if (flag.startsWith("\\filon")) {
+            String[] frequency = flag.split("f");
             if (frequency.length != 2 || !frequency[1].chars().allMatch(Character::isDigit)) throw new IllegalArgumentException("Not a valid regex");
             double k = Double.parseDouble(frequency[1]);
             return filon(f, a, b, k, (b - a) * k / Math.PI, false);
