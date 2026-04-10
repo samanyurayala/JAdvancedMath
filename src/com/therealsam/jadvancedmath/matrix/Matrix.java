@@ -203,7 +203,7 @@ public final class Matrix {
     public double determinant() {
         if (m.length != m[0].length) throw new IllegalArgumentException("Matrix must be square to perform operation \"determinant\"");
         if (m.length == 1) return m[0][0];
-        if (m.length == 2) return m[0][0] * m[1][1] -  m[0][1] * m[1][0];
+        if (m.length == 2) return m[0][0] * m[1][1] - m[0][1] * m[1][0];
         double sum = 0;
         for (int i = 0; i < m.length; i++) {
             int multiplier = (i % 2 == 0) ? 1 : -1;

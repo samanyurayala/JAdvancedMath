@@ -18,12 +18,11 @@ public final class Series {
 
     private static double infSum(int start, Function<Double, Double> f) {
         double sum = 0;
-        while (start < start + 1000000) {
-            double current = f.apply((double)start);
+        for (double i = start; i < 10000000; i++) {
+            double current = f.apply(i);
             sum += current;
-            if (current < 1e-10) break;
-            start += 1;
+            if (Math.abs(current) < 1e-12 * Math.max(1.0, Math.abs(sum))) break;
         }
-        return Math.round(sum * 1e5) / 1e5;
+        return Math.round(sum * 1e10) / 1e10;
     }
 }
