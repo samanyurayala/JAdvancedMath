@@ -1,6 +1,4 @@
-package com.therealsam.jadvancedmath.matrix;
-
-import com.therealsam.jadvancedmath.imaginary.Complex;
+package com.therealsam.jadvancedmath.vector;
 
 import java.util.Arrays;
 

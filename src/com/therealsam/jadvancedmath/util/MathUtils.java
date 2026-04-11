@@ -1,4 +1,4 @@
-package com.therealsam.jadvancedmath.utils;
+package com.therealsam.jadvancedmath.util;
 
 import java.util.Arrays;
 

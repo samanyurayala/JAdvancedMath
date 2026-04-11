@@ -1,4 +1,4 @@
-package com.therealsam.jadvancedmath.special;
+package com.therealsam.jadvancedmath.util;
 
 import com.therealsam.jadvancedmath.calculus.Series;
 
@@ -48,5 +48,7 @@ public class SpecialFunctions {
             return multiplier / Math.pow(x, z);
         });
     }
+
+
 
 }
